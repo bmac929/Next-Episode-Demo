@@ -4,8 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "cd next-episode-no-react && node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/brooke1617/Next-Episode#readme",
   "dependencies": {
-    "mdbreact": "^4.19.0"
+    "mdbreact": "^4.19.0",
+    "mongoose": "^5.6.11",
+    "unirest": "^0.6.0"
   }
 }
