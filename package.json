@@ -20,7 +20,7 @@
   "homepage": "https://github.com/brooke1617/Next-Episode#readme",
   "dependencies": {
     "mdbreact": "^4.19.0",
-    "mongoose": "^5.6.11",
+    "mongoose": "^5.7.5",
     "unirest": "^0.6.0"
   }
 }
