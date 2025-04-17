@@ -4,6 +4,7 @@ var app = express();
 var mongoose = require("mongoose");
 var show_array = [];
 const User = require("./models/users");
+const axios = require('axios');
 
 
 
@@ -20,7 +21,7 @@ var test = function (request, response) {
     // console.log(request.body)
     req.headers({
         "x-rapidapi-host": "frecar-epguides-api-v1.p.rapidapi.com",
-        "x-rapidapi-key": "15cacc2175msh52cf4f4aa8efd48p166945jsnb4864ae31222"
+        "x-rapidapi-key": "52ce2fb737msh8afb801539c06c8p139893jsn9a6e8b5c0057"
     });
 
 
@@ -51,22 +52,41 @@ var test = function (request, response) {
 }
 app.post("/dashboard", test);
 
-app.post("/dashboard/load", function (request, response) {
-    console.log("TESST" + JSON.stringify(request.body));
-    var req = unirest("GET", `https://frecar-epguides-api-v1.p.rapidapi.com/${request.body.show}/next/`);
-    //console.log(show)
-    req.headers({
-        "x-rapidapi-host": "frecar-epguides-api-v1.p.rapidapi.com",
-        "x-rapidapi-key": "15cacc2175msh52cf4f4aa8efd48p166945jsnb4864ae31222"
-    });
+app.post("/dashboard/load", async function  (request, response) {
+    // console.log("TESST" + JSON.stringify(request.body));
+    // var req = unirest("GET", `https://frecar-epguides-api-v1.p.rapidapi.com/${request.body.show}/next/`);
+    // //console.log(show)
+    // req.headers({
+    //     "x-rapidapi-host": "frecar-epguides-api-v1.p.rapidapi.com",
+    //     "x-rapidapi-key": "52ce2fb737msh8afb801539c06c8p139893jsn9a6e8b5c0057"
+    // });
 
 
-    req.end(function (res) {
-        // if (res.error) throw new Error(res.error);
-        //console.log(res.body);
-        response.json(res.body);
+    // req.end(function (res) {
+    //     // if (res.error) throw new Error(res.error);
+    //     //console.log(res.body);
+    //     response.json(res.body);
 
-    });
+    // });
+
+    const options = {
+        method: 'GET',
+        url: `https://epguides.frecar.no/show/${request.body.show}/next/`, //${request.body.show}/next/
+        headers: {
+          'x-rapidapi-key': '52ce2fb737msh8afb801539c06c8p139893jsn9a6e8b5c0057',
+          'x-rapidapi-host': 'frecar-epguides-api-v1.p.rapidapi.com'
+        }
+      };
+      
+      try {
+          const req = await axios.request(options);
+          console.log(req.data);
+
+          response.json(req.data);
+        
+      } catch (error) {
+          console.error(error);
+      }
 
 });
 

@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "cd next-episode-no-react && node server.js",
+    "start": "cd next-episode-no-react && nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,8 +19,11 @@
   },
   "homepage": "https://github.com/brooke1617/Next-Episode#readme",
   "dependencies": {
+    "axios": "^1.8.4",
+    "express": "^5.1.0",
     "mdbreact": "^4.19.0",
     "mongoose": "^5.6.11",
+    "nodemon": "^3.1.9",
     "unirest": "^0.6.0"
   }
 }
